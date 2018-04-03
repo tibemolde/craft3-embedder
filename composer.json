@@ -1,0 +1,44 @@
+{
+    "name": "tibemolde/embedder",
+    "description": "Embed videos (YouTube, Vimeo, Facebook) or playlists (Spotify, Soundcloud) easily!",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "embedder"
+    ],
+    "support": {
+        "docs": "https://github.com/tibemolde/embedder/blob/master/README.md",
+        "issues": "https://github.com/tibemolde/embedder/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TIBE Molde",
+            "homepage": "https://github.com/tibemolde"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "tibemolde\\embedder\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Embedder",
+        "handle": "embedder",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/tibemolde/embedder/master/CHANGELOG.md",
+        "components": {
+            "videoEmbedder": "tibemolde\\embedder\\services\\VideoEmbedder",
+            "playlistEmbedder": "tibemolde\\embedder\\services\\PlaylistEmbedder"
+        },
+        "class": "tibemolde\\embedder\\Embedder"
+    }
+}

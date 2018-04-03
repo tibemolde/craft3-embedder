@@ -30,7 +30,33 @@ No configuration is needed outside of runtime-options
 
 ## Using Embedder
 
--Insert text here-
+Basic usage:
+
+    <div class="embed embed--{{ craft.embedder.getVideoType(videoUrl) }}">
+      <iframe src="{{ craft.embedder.getVideoEmbedUrl(videoUrl) }}" title="{{ 'Watch video'|t }}"></iframe>
+    </div>
+    
+Style as you please (this is just an example):
+
+
+    .embed {
+	    position: relative;
+	    overflow: hidden;
+	    width: 100%;
+	    height: auto;
+	    padding-bottom: 56.25%; /* ratio for 16:9 embed */
+
+	    iframe,
+	    object,
+	    embed {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100% !important;
+		    height: 100% !important;
+		    border: 0;
+	    }
+    }
 
 ## Embedder Roadmap
 

@@ -1,0 +1,21 @@
+{% import "_includes/forms" as form %}
+
+{{ form.textField({
+	label: "Storage folder"|t,
+	id: 'storageFolder',
+	name: 'storageFolder',
+	instructions: "Storage folder for video-posters - path relative to public folder"|t,
+	value: settings.storageFolder,
+	errors: settings.getErrors('storageFolder')
+}) }}
+
+{{ form.textField({
+	label: "Storage Url"|t,
+	id: 'storageUrl',
+	name: 'storageUrl',
+	instructions: "Storage folder for video-posters - path relative to public folder"|t,
+	value: settings.storageUrl,
+	errors: settings.getErrors('storageUrl')
+}) }}
+
+<hr>

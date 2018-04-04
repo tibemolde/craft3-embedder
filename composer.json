@@ -1,6 +1,6 @@
 {
     "name": "tibemolde/embedder",
-    "description": "Embed videos (YouTube, Vimeo, Facebook) or playlists (Spotify, Soundcloud) easily!",
+    "description": "Embed videos (YouTube, Vimeo, Facebook) easily!",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [

@@ -2,7 +2,7 @@
 /**
  * Embedder plugin for Craft CMS 3.x
  *
- * Embed videos (YouTube, Vimeo, Facebook) or playlists (Spotify, Soundcloud) easily!
+ * Embed videos (YouTube, Vimeo, Facebook) easily!
  *
  * @link      https://github.com/tibemolde
  * @copyright Copyright (c) 2018 TIBE Molde

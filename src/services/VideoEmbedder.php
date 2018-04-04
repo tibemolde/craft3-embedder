@@ -137,7 +137,7 @@ class VideoEmbedder extends Component
 
     private function _getVimeoImage($url)
     {
-        $id = $this->_getId(self::VIMEO, $url);
+        $id = $this->_getVimeoId(self::VIMEO, $url);
         if (!$id) {
             return null;
         }
@@ -191,9 +191,24 @@ class VideoEmbedder extends Component
         return @json_decode(file_get_contents("http://vimeo.com/api/oembed.json?url=$url"));
     }
 
+    private function _getYouTubeId($url)
+    {
+        $url = parse_url($url);
+        if ($url['host'] == 'youtu.be') {
+            return substr($url['path'], 1);
+        }
+        $params = array();
+        parse_str($url['query'], $params);
+        if (!isset($params['v'])) {
+            return null;
+        }
+
+        return $params['v'];
+    }
+
     private function _getYouTubeImage($url)
     {
-        $id = $this->_getId(self::YOUTUBE, $url);
+        $id = $this->_getYouTubeId($url);
         if (!$id) {
             return null;
         }

@@ -17,6 +17,7 @@ use craft\services\Plugins;
 use craft\web\twig\variables\CraftVariable;
 use tibemolde\embedder\services\VideoEmbedder as VideoEmbedderService;
 use tibemolde\embedder\variables\EmbedderVariable;
+use tibemolde\embedder\models\Settings;
 use yii\base\Event;
 
 /**
@@ -31,26 +32,14 @@ use yii\base\Event;
  */
 class Embedder extends Plugin
 {
-    // Static Properties
-    // =========================================================================
-
-    /**
-     * @var Embedder
-     */
     public static $plugin;
-    // Public Properties
-    // =========================================================================
+    public        $schemaVersion = '1.0.1';
 
-    /**
-     * @var string
-     */
-    public $schemaVersion = '1.0.0';
-    // Public Methods
-    // =========================================================================
+    protected function createSettingsModel()
+    {
+        return new Settings();
+    }
 
-    /**
-     * @inheritdoc
-     */
     public function init()
     {
         parent::init();

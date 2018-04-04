@@ -12,6 +12,8 @@ namespace tibemolde\embedder\services;
 
 use Craft;
 use craft\base\Component;
+use craft\errors\FileException;
+use tibemolde\embedder\Embedder;
 
 /**
  * @author    TIBE Molde
@@ -191,21 +193,6 @@ class VideoEmbedder extends Component
         return @json_decode(file_get_contents("http://vimeo.com/api/oembed.json?url=$url"));
     }
 
-    private function _getYouTubeId($url)
-    {
-        $url = parse_url($url);
-        if ($url['host'] == 'youtu.be') {
-            return substr($url['path'], 1);
-        }
-        $params = array();
-        parse_str($url['query'], $params);
-        if (!isset($params['v'])) {
-            return null;
-        }
-
-        return $params['v'];
-    }
-
     private function _getYouTubeImage($url)
     {
         $id = $this->_getYouTubeId($url);
@@ -213,9 +200,12 @@ class VideoEmbedder extends Component
             return null;
         }
         $settings          = Embedder::$plugin->getSettings();
-        $storageFolderPath = $settings->storageFolder;
+        $storageFolderPath = $settings->storagePath;
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         $storageFolder = Craft::getAlias($storageFolderPath);
+        if (!file_exists($storageFolder) && !mkdir($storageFolder) && !is_dir($storageFolder)) {
+            throw new FileException('Unable to create storage folder locally');
+        }
         $path          = sprintf('%s/%s', $storageFolder, self::YOUTUBE);
         $fileName      = sprintf('%s.%s', $id, 'jpg');
         $localPath     = sprintf('%s/%s', $path, $fileName);
@@ -242,5 +232,20 @@ class VideoEmbedder extends Component
         }
 
         return null;
+    }
+
+    private function _getYouTubeId($url)
+    {
+        $url = parse_url($url);
+        if ($url['host'] == 'youtu.be') {
+            return substr($url['path'], 1);
+        }
+        $params = array();
+        parse_str($url['query'], $params);
+        if (!isset($params['v'])) {
+            return null;
+        }
+
+        return $params['v'];
     }
 }

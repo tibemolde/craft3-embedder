@@ -12,12 +12,10 @@ namespace tibemolde\embedder;
 
 use Craft;
 use craft\base\Plugin;
-use craft\events\PluginEvent;
-use craft\services\Plugins;
 use craft\web\twig\variables\CraftVariable;
+use tibemolde\embedder\models\Settings;
 use tibemolde\embedder\services\VideoEmbedder as VideoEmbedderService;
 use tibemolde\embedder\variables\EmbedderVariable;
-use tibemolde\embedder\models\Settings;
 use yii\base\Event;
 
 /**
@@ -27,25 +25,14 @@ use yii\base\Event;
  * @package   Embedder
  * @since     1.0.0
  *
- * @property  VideoEmbedderService    $videoEmbedder
- * @property  PlaylistEmbedderService $playlistEmbedder
+ * @property  VideoEmbedderService $videoEmbedder
+ * @property  Settings $settings
+ * @method    Settings getSettings()
  */
 class Embedder extends Plugin
 {
     public static $plugin;
     public        $schemaVersion = '1.0.1';
-
-    protected function createSettingsModel(): Settings
-    {
-        return new Settings();
-    }
-
-    protected function settingsHtml(): string
-    {
-        return Craft::$app->view->renderTemplate('embedder/settings', [
-            'settings' => $this->getSettings(),
-        ]);
-    }
 
     public function init()
     {
@@ -63,5 +50,15 @@ class Embedder extends Plugin
 
     // Protected Methods
     // =========================================================================
+    protected function createSettingsModel(): Settings
+    {
+        return new Settings();
+    }
 
+    protected function settingsHtml(): string
+    {
+        return Craft::$app->view->renderTemplate('embedder/settings', [
+            'settings' => $this->getSettings(),
+        ]);
+    }
 }

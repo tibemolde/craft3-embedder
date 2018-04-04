@@ -6,6 +6,6 @@ use craft\base\Model;
 
 class Settings extends Model
 {
-    public $storageFolder = '@web/uploads/video-posters';
-    public $storageUrl = '@webroot/uploads/video-posters';
+    public $storagePath = '@webroot/uploads/video-posters';
+    public $storageUrl = '@web/uploads/video-posters';
 }

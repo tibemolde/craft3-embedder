@@ -2,7 +2,7 @@
     "name": "tibemolde/embedder",
     "description": "Embed videos (YouTube, Vimeo, Facebook) easily!",
     "type": "craft-plugin",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "keywords": [
         "craft",
         "cms",
@@ -21,6 +21,9 @@
             "homepage": "https://github.com/tibemolde"
         }
     ],
+    "require-dev": {
+        "roave/security-advisories" : "dev-master"
+    },
     "require": {
         "craftcms/cms": "^3.0.0-RC1"
     },
@@ -32,7 +35,7 @@
     "extra": {
         "name": "Embedder",
         "handle": "embedder",
-        "hasCpSettings": false,
+        "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/tibemolde/embedder/master/CHANGELOG.md",
         "components": {

@@ -26,7 +26,7 @@ Embed videos easily!
 
 ## Configuring Embedder
 
-No configuration is needed outside of runtime-options
+No configuration is needed outside of runtime-options, however you can tweak where video-posters are stored locally through the plugin-settings
 
 ## Using Embedder
 

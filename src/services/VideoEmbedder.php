@@ -200,7 +200,7 @@ class VideoEmbedder extends Component
             return null;
         }
         $settings          = Embedder::$plugin->getSettings();
-        $storageFolderPath = $settings->storagePath;
+        $storageFolderPath = $settings->storageFolder;
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         $storageFolder = Craft::getAlias($storageFolderPath);
         if (!file_exists($storageFolder) && !mkdir($storageFolder) && !is_dir($storageFolder)) {

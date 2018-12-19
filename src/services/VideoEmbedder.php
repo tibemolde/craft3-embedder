@@ -26,7 +26,7 @@ class VideoEmbedder extends Component
     const VIMEO    = 'vimeo';
     const YOUTUBE  = 'youtube';
 
-    public function getEmbedUrl($url)
+    public function getEmbedUrl($url): string
     {
         $type = $this->getType($url);
 
@@ -49,7 +49,7 @@ class VideoEmbedder extends Component
         return self::YOUTUBE;
     }
 
-    private function _getEmbedUrl($type, $url)
+    private function _getEmbedUrl($type, $url): string
     {
         switch ($type) {
             case self::FACEBOOK:
@@ -67,7 +67,7 @@ class VideoEmbedder extends Component
         return "https://www.youtube.com/embed/$uri" . ($queryStarted ? '&' : '?') . 'rel=0';
     }
 
-    private function _getFacebookUri($url)
+    private function _getFacebookUri($url): string
     {
         $parsed = parse_url($url);
         if (empty($parsed['query'])) {
@@ -108,6 +108,9 @@ class VideoEmbedder extends Component
     private function _getYouTubeUri($url)
     {
         $url = parse_url($url);
+        if (empty($url) || !isset($url['host']) || empty($url['host'])) {
+            return null;
+        }
         if ($url['host'] === 'youtu.be') {
             $id = substr($url['path'], 1);
 
@@ -237,6 +240,9 @@ class VideoEmbedder extends Component
     private function _getYouTubeId($url)
     {
         $url = parse_url($url);
+        if (empty($url) || !isset($url['host']) || empty($url['host'])) {
+            return null;
+        }
         if ($url['host'] == 'youtu.be') {
             return substr($url['path'], 1);
         }

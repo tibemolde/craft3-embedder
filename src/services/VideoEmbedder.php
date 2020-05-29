@@ -59,7 +59,7 @@ class VideoEmbedder extends Component
             case self::VIMEO:
                 $id = $this->_getVimeoId($url);
 
-                return "https://player.vimeo.com/video/$id";
+                return "https://player.vimeo.com/$id";
         }
         $uri          = $this->_getYouTubeUri($url);
         $queryStarted = mb_strpos($uri, '?') !== false;

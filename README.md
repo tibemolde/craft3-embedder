@@ -36,6 +36,7 @@ Basic usage:
       <iframe src="{{ craft.embedder.getVideoEmbedUrl(videoUrl) }}" title="{{ 'Watch video'|t }}"></iframe>
     </div>
     
+    
 Style as you please (this is just an example):
 
 

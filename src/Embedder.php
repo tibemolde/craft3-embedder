@@ -32,7 +32,7 @@ use yii\base\Event;
 class Embedder extends Plugin
 {
     public static $plugin;
-    public        $schemaVersion = '1.0.6';
+    public string $schemaVersion = '1.0.6';
 
     public function init()
     {
